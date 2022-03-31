@@ -15,7 +15,7 @@
           <div @click="boop(articles)">
             {{ articles }}
           </div>
-          <button @click="addPanier(articles)">Click here for panier</button>
+          <button @click="panier_add(articles)">Click here for panier</button>
         </li>
       </ul>
     </div>
@@ -36,6 +36,8 @@ let panier_value = ref(0);
 let panier = [];
 storeStore.all_articles = test_var;
 
+let panier_object = {};
+
 function check_contenu_panier() {
   console.log("check_contenu_panier");
   if (panier.length == 0) {
@@ -49,26 +51,6 @@ function check_contenu_panier() {
   for (let index = 0; index < panier.length; index++) {
     console.log(panier[index]);
   }
-}
-
-function addPanier(articles) {
-  console.log("Add panier");
-  panier_value.value++;
-  panier.push(articles.id);
-  storeStore.articles_du_panier = panier;
-  console.log(storeStore.articles_du_panier);
-  console.log(panier);
-  console.log("Count output");
-  let output = "";
-  var counts = {};
-  for (let index = 0; index < panier.length; index++) {
-    counts[array[i]] = (counts[array[i]] + 1) || 1;
-
-  }
-  console.log(counts)
-  console.log("Price is " + output);
-
-  // console.log(panier.values);
 }
 
 function boop(article) {
@@ -86,6 +68,64 @@ function do_the_stuff() {
     console.log(test_var.articles[index]);
   }
 }
+
+function panier_add(article) {
+  // let article_id = article.id
+  // let article_title = article.title
+  //  var testtesttest = Object.assign({ article_panier_boy : article.id })
+  //  console.log(testtesttest);
+  //  console.log(Object.keys(testtesttest));
+  let property_name = article.id;
+  console.log(property_name);
+  if (panier_object.hasOwnProperty(property_name)) {
+    console.log("Exists");
+    panier_object[property_name] = panier_object[property_name] + 1;
+  } else {
+    console.log("Does not exist");
+    panier_object[property_name] = 1;
+  }
+
+  console.log(panier_object);
+
+  //  if(Object.keys(testtesttest).contains("c")) {
+  //    console.log("testtesttest vide");
+  // }
+}
+
+// for (let index = 0; index < article.length; index++) {
+//   let randrand = rand(0, article.length);
+//   if(Object.keys(panier_object).includes(article.id)) {
+//     console.log("already in panier");
+//     break;
+//   } else {
+//     console.log("Putting it in.");
+//   }
+//   let el_1 = article[index].id;
+//   let createte = { el_1: randrand };
+//   Object.assign(panier_object, createte);
+// }
+// console.log(panier_object);
+
+// function addPanier(articles) {
+//   console.log("Add panier");
+//   panier_value.value++;
+//   panier.push(articles.id);
+//   storeStore.articles_du_panier = panier;
+//   console.log(storeStore.articles_du_panier);
+//   console.log(panier);
+//   console.log("Count output");
+//   let output = "";
+//   var counts = {};
+//   for (let index = 0; index < panier.length; index++) {
+//     counts[panier[index]] = counts[panier[index]] + 1 || 1;
+//   }
+//   output = Object.values(counts).length;
+
+//   console.log(counts);
+//   console.log("Price is " + output);
+
+//   // console.log(panier.values);
+// }
 </script>
 
 <style>

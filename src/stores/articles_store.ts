@@ -6,7 +6,7 @@ export const useArticlesStore = defineStore({
     all_articles: [],
     articles_du_panier: [],
   }),
-  persist:true,
+  persist: true,
   getters: {},
   actions: {},
 });
