@@ -15,7 +15,7 @@
           <div @click="boop(articles)">
             {{ articles }}
           </div>
-          <button @click="boo(articles)">Click here for panier</button>
+          <button @click="addPanier(articles)">Click here for panier</button>
         </li>
       </ul>
     </div>
@@ -51,23 +51,36 @@ function check_contenu_panier() {
   }
 }
 
-function boo(articles) {
-  console.log("boo");
+function addPanier(articles) {
+  console.log("Add panier");
   panier_value.value++;
   panier.push(articles.id);
+  storeStore.articles_du_panier = panier;
+  console.log(storeStore.articles_du_panier);
   console.log(panier);
+  console.log("Count output");
+  let output = "";
+  var counts = {};
+  for (let index = 0; index < panier.length; index++) {
+    counts[array[i]] = (counts[array[i]] + 1) || 1;
+
+  }
+  console.log(counts)
+  console.log("Price is " + output);
+
+  // console.log(panier.values);
 }
 
 function boop(article) {
   alert(article.id + " - " + article.title);
-  storeStore.selected_articles.push(article);
+  storeStore.articles_du_panier.push(article);
   // router.push("/panier");
 }
 
 function do_the_stuff() {
+  console.log("Do the stuff");
   console.log(test_var);
   console.log(test_var.articles);
-  console.log();
   console.log(Object.entries);
   for (let index = 0; index < test_var.articles.length; index++) {
     console.log(test_var.articles[index]);

@@ -4,10 +4,9 @@ export const useArticlesStore = defineStore({
   id: "articles_store",
   state: () => ({
     all_articles: [],
-    selected_articles: [],
+    articles_du_panier: [],
   }),
-  getters: {
-  },
-  actions: {
-  },
+  persist:true,
+  getters: {},
+  actions: {},
 });
