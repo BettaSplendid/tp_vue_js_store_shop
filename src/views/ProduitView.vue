@@ -55,7 +55,7 @@ function check_contenu_panier() {
 
 function boop(article) {
   alert(article.id + " - " + article.title);
-  storeStore.articles_du_panier.push(article);
+  // storeStore.articles_du_panier.push(article);
   // router.push("/panier");
 }
 
@@ -86,6 +86,8 @@ function panier_add(article) {
   }
 
   console.log(panier_object);
+  storeStore.articles_du_panier = panier_object;
+  console.log(storeStore.articles_du_panier);
 
   //  if(Object.keys(testtesttest).contains("c")) {
   //    console.log("testtesttest vide");
