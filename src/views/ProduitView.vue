@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is an about page</h1>
+    <h1>Product list</h1>
     <div style="text-align: right; border: black">
       {{ panier_value }}
     </div>
@@ -8,16 +8,33 @@
     <button @click="do_the_stuff()">Test things</button>
     <button @click="boop()">boop</button>
     <button @click="check_contenu_panier()">Output Panier Articles</button>
-    <div>Liste des produits</div>
+    <br>
+    <br>
+    <h2>Liste des produits</h2>
+    <br>
+    <hr />
     <div>
-      <ul id="example-1">
-        <li v-for="articles in test_var.articles" :key="articles">
-          <div @click="boop(articles)">
-            {{ articles }}
+      <div
+        v-for="articles in test_var.articles"
+        :key="articles"
+        class="article"
+      >
+        <div @click="boop(articles)">
+          <!-- {{ articles }} -->
+          <div>Id: {{ articles.id }}</div>
+          <div>
+            Description Produit:
+            {{ articles.description }}
           </div>
-          <button @click="panier_add(articles)">Click here for panier</button>
-        </li>
-      </ul>
+          <div>
+            Price:
+            {{ articles.price }}
+            {{ articles.currency }}
+          </div>
+          <div>Brand: {{ articles.brand }}</div>
+        </div>
+        <button @click="panier_add(articles)">Click here for panier</button>
+      </div>
     </div>
   </div>
 </template>
@@ -137,5 +154,10 @@ function panier_add(article) {
     display: flex;
     align-items: center;
   }
+}
+.article {
+  border: 1px solid black;
+  padding: 1vh;
+  /* margin: 10px; */
 }
 </style>
