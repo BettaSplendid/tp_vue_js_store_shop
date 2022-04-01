@@ -4,12 +4,29 @@
     <button @click="logs()">Logs</button>
 
     <button @click="check()">Check</button>
+
     <ul>
       <li v-for="(element, index) in selected_articles_panier" :key="element">
         <p>
           Id article :
-          {{ all_articles.articles[index] }}
+          {{ all_articles.articles[index - 1] }}
         </p>
+        <div>
+          Description Produit:
+          {{ all_articles.articles[index - 1].description }}
+        </div>
+        <div>
+          Prix Produit:
+          {{ all_articles.articles[index - 1].price }}
+        </div>
+        <div>
+          Monnaie:
+          {{ all_articles.articles[index - 1].currency }}
+        </div>
+        <div>
+          Marque:
+          {{ all_articles.articles[index - 1].brand }}
+        </div>
         -
         <p>
           QUantity article :
