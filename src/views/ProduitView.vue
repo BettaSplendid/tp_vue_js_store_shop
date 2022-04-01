@@ -45,18 +45,15 @@
 <script setup>
 import json from "../components/inventory.json";
 import { useArticlesStore } from "../stores/articles_store";
-import { useRouter, useRoute } from "vue-router";
 import { ref } from "vue";
 
-const router = useRouter();
-const route = useRoute();
 const storeStore = useArticlesStore();
 let test_var = json;
 let temp_panier_amount = ref(0);
 let panier = [];
 storeStore.all_articles = test_var;
 
-let panier_object = {};
+let panier_object = new Object;
 
 function check_contenu_panier() {
   console.log("check_contenu_panier");
@@ -97,7 +94,8 @@ function panier_add(article) {
   //  console.log(Object.keys(testtesttest));
   let property_name = article.id;
   console.log(property_name);
-  if (panier_object.hasOwnProperty(property_name)) {
+  console.log(panier_object)
+  if (Object.prototype.hasOwnProperty.call(panier_object[property_name])) {
     console.log("Exists");
     panier_object[property_name] = panier_object[property_name] + 1;
   } else {

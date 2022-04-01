@@ -6,7 +6,6 @@
     <button @click="check()">Check</button>
     <ul>
       <li v-for="(element, index) in selected_articles_panier" :key="element">
-        
         <p>
           Id article :
           {{ all_articles.articles[index] }}
@@ -16,7 +15,7 @@
           QUantity article :
           {{ element }}
         </p>
-        <br>
+        <br />
       </li>
     </ul>
   </div>
@@ -24,12 +23,12 @@
 
 <script setup>
 import { useArticlesStore } from "../stores/articles_store";
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 import json from "../components/inventory.json";
 
 const storeStore = useArticlesStore();
 const selected_articles_panier = storeStore.articles_du_panier;
-const all_articles = json
+const all_articles = json;
 let panier_length = Object.keys(selected_articles_panier).length;
 let keys_to_check = Object.keys(selected_articles_panier);
 
