@@ -53,7 +53,7 @@ let temp_panier_amount = ref(0);
 let panier = [];
 storeStore.all_articles = test_var;
 
-let panier_object = new Object;
+let panier_object = new Object();
 
 function check_contenu_panier() {
   console.log("check_contenu_panier");
@@ -94,8 +94,8 @@ function panier_add(article) {
   //  console.log(Object.keys(testtesttest));
   let property_name = article.id;
   console.log(property_name);
-  console.log(panier_object)
-  if (Object.prototype.hasOwnProperty.call(panier_object[property_name])) {
+  console.log(panier_object);
+  if (panier_object.hasOwnProperty(property_name)) {
     console.log("Exists");
     panier_object[property_name] = panier_object[property_name] + 1;
   } else {
