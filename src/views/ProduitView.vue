@@ -1,17 +1,20 @@
 <template>
   <div>
     <h1>Product list</h1>
-    <div style="text-align: right; border: black">
-      {{ panier_value }}
+    <div style="text-align: right; border: black; color: red">
+      <b>
+        Quantité d'articles:
+        {{ temp_panier_amount }}
+      </b>
     </div>
 
     <button @click="do_the_stuff()">Test things</button>
     <button @click="boop()">boop</button>
     <button @click="check_contenu_panier()">Output Panier Articles</button>
-    <br>
-    <br>
+    <br />
+    <br />
     <h2>Liste des produits</h2>
-    <br>
+    <br />
     <hr />
     <div>
       <div
@@ -49,7 +52,7 @@ const router = useRouter();
 const route = useRoute();
 const storeStore = useArticlesStore();
 let test_var = json;
-let panier_value = ref(0);
+let temp_panier_amount = ref(0);
 let panier = [];
 storeStore.all_articles = test_var;
 
@@ -101,7 +104,7 @@ function panier_add(article) {
     console.log("Does not exist");
     panier_object[property_name] = 1;
   }
-
+  temp_panier_amount.value++;
   console.log(panier_object);
   storeStore.articles_du_panier = panier_object;
   console.log(storeStore.articles_du_panier);
@@ -127,7 +130,7 @@ function panier_add(article) {
 
 // function addPanier(articles) {
 //   console.log("Add panier");
-//   panier_value.value++;
+//   temp_panier_amount.value++;
 //   panier.push(articles.id);
 //   storeStore.articles_du_panier = panier;
 //   console.log(storeStore.articles_du_panier);
